@@ -5,14 +5,17 @@ import TodoList from './components/TodoList';
 
 function App() {
   return (
-		<div className="App">
-			<header>
-				<h1>To-Do</h1>
-			</header>
-			<section>
-				<TodoList />
-			</section>
-		</div>
+		<section className="App">
+			<div className="main-div">
+				<header>
+          <h1>My <span className="todo">To-Do</span> List</h1>
+          <hr className="two"/>
+				</header>
+				<section>
+					<TodoList />
+				</section>
+			</div>
+		</section>
 	);
 }
 

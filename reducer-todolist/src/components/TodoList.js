@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from "react";
 import { listReducer, initialState } from "../reducers/ListReducer";
-import { Button, Input, InputGroup } from "reactstrap";
+import { Button, Input, InputGroup, ListGroupItem, ListGroup } from "reactstrap";
+import styled from "styled-components";
 
 const TodoList = () => {
 	const [state, dispatch] = useReducer(listReducer, initialState);
@@ -13,8 +14,8 @@ const TodoList = () => {
 	};
 
 	return (
-		<div>
-			<form>
+		<div className = "main-container">
+			<form className ="text-input">
 				<InputGroup>
 					<Input
 						type="text"
@@ -22,26 +23,15 @@ const TodoList = () => {
 						value={newListItem}
 						placeholder="Add New Item"
 						onChange={handleChanges}
-						required
+						// required
 					/>
-					{/* {newListItem.length > 0 ? (
-						<Button
-							onClick={() => {
-								// e.preventDefault();
-								dispatch({ type: "ADD_TODO", payload: newListItem });
-								setNewListItem("");
-							}}
-						>
-							+
-						</Button>
-					) : null} */}
 				</InputGroup>
 			</form>
 
 			{state.todos.map(todo => {
 				// console.log(todo);
 				return (
-					<div
+					<StyledList
 						key={todo.id}
 						className={todo.completed === false ? "todo" : "todo completed"}
 						onClick={() => {
@@ -49,12 +39,14 @@ const TodoList = () => {
 							dispatch({ type: "MARK_COMPLETE" });
 						}}
 					>
-						<p>{todo.task}</p>
-					</div>
+						<ListGroupItem color="warning">{todo.task}</ListGroupItem>
+					</StyledList>
 				);
 			})}
 			{newListItem.length > 0 ? (
-				<Button
+                <Button
+                    type="submit"
+					color="success"
 					onClick={() => {
 						// e.preventDefault();
 						dispatch({ type: "ADD_TODO", payload: newListItem });
@@ -65,6 +57,7 @@ const TodoList = () => {
 				</Button>
 			) : null}
 			<Button
+				color="danger"
 				onClick={() => {
 					dispatch({ type: "CLEAR_COMPLETED" });
 				}}
@@ -76,3 +69,8 @@ const TodoList = () => {
 };
 
 export default TodoList;
+
+const StyledList = styled(ListGroup)`
+    margin:1%;
+`;
+
