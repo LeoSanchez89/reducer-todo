@@ -1,0 +1,53 @@
+.App {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-bottom: 0.5%;
+}
+
+.btn {
+	width: 50px;
+	margin: 1%;
+}
+
+.todo.completed li {
+	color: darkred !important ;
+	text-decoration: line-through !important;
+	background-color: rgb(224, 108, 88) !important;
+}
+
+header {
+	margin: 5%;
+	margin-bottom: 20%;
+}
+
+.main-div {
+	width: 30%;
+}
+
+.text-input {
+	margin: 1%;
+	margin-bottom: 5%;
+}
+
+header h1 {
+	font-size: 3rem;
+}
+
+h1 .todo {
+	color: #28a745;
+}
+
+.two {
+  
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.75),
+		rgba(0, 0, 0, 0)
+	);
+}
