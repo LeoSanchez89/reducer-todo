@@ -37,7 +37,7 @@
   }
 }
 
-.item.completed {
+.todo.completed {
     color:darkred !important ;
     text-decoration: line-through !important;
     background-color: rgb(224, 108, 88) !important;

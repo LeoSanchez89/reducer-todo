@@ -20,29 +20,27 @@ export const initialState = {
 
 export const listReducer = (state, action) => {
 	switch (action.type) {
-        case "ADD_TODO":
-            const newTodo = {
-                task: action.payload,
-                id: Date.now(),
-                completed: false
-            }
-            return {
-                ...state,
-                todos: [...state.todos, newTodo]
-            };
-        case "MARK_COMPLETE":
-            return state.todos.map(item => {
-                if (item.id === action.payload) {
-                    return { ...item, completed: !item.completed }
-                }
-                else return { ...item }
-            });
-            
-
-        
-        
-        
-        default:
+		case "ADD_TODO":
+			const newTodo = {
+				task: action.payload,
+				id: Date.now(),
+				completed: false
+			};
+			return {
+				...state,
+				todos: [...state.todos, newTodo]
+			};
+		case "MARK_COMPLETE":
+			// if (todos.id === action.payload) {
+			// 	return { ...todos, completed: !todos.completed };
+			// } else return { ...todos };
+			return { ...state };
+		case "CLEAR_COMPLETED":
+			return {
+				// ...state,
+				todos: [...state.todos.filter(todo => !todo.completed)]
+			};
+		default:
 			return state;
 	}
 };
