@@ -12,10 +12,17 @@ const TodoList = () => {
 	const handleChanges = e => {
 		setNewListItem(e.target.value);
 	};
+	
+	const handleSubmit = e => {
+
+		e.preventDefault();
+		dispatch({ type: "ADD_TODO", payload: newListItem });
+		setNewListItem("");
+	};
 
 	return (
 		<div className = "main-container">
-			<form className ="text-input">
+			<form onSubmit={handleSubmit} className ="text-input">
 				<InputGroup>
 					<Input
 						type="text"
@@ -47,18 +54,19 @@ const TodoList = () => {
                 <Button
                     type="submit"
 					color="success"
-					onClick={() => {
-						// e.preventDefault();
-						dispatch({ type: "ADD_TODO", payload: newListItem });
-						setNewListItem("");
-					}}
+					onClick={handleSubmit}
+					// onClick={() => {
+					// 	// e.preventDefault();
+					// 	dispatch({ type: "ADD_TODO", payload: newListItem });
+					// 	setNewListItem("");
+					// }}
 				>
 					+
 				</Button>
 			) : null}
 			<Button
 				color="danger"
-				onClick={() => {
+				onClick={ () => {
 					dispatch({ type: "CLEAR_COMPLETED" });
 				}}
 			>
